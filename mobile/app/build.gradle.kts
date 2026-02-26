@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
   id("com.android.application")
   id("org.jetbrains.kotlin.android")
@@ -10,6 +13,29 @@ fun String.toBuildConfigStringLiteral(): String {
 
 val apiBaseUrlFromProperty = (project.findProperty("WORDCOACH_API_BASE_URL") as? String)?.trim()
 val clientTokenFromProperty = (project.findProperty("WORDCOACH_CLIENT_TOKEN") as? String)?.trim()
+
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+if (keystorePropertiesFile.exists()) {
+  FileInputStream(keystorePropertiesFile).use { keystoreProperties.load(it) }
+}
+
+fun readSigningValue(name: String): String? {
+  return (
+    keystoreProperties.getProperty(name)
+      ?: (project.findProperty(name) as? String)
+      ?: System.getenv(name)
+    )?.trim()?.takeIf { it.isNotEmpty() }
+}
+
+val releaseStoreFilePath = readSigningValue("WORDCOACH_RELEASE_STORE_FILE")
+val releaseStorePassword = readSigningValue("WORDCOACH_RELEASE_STORE_PASSWORD")
+val releaseKeyAlias = readSigningValue("WORDCOACH_RELEASE_KEY_ALIAS")
+val releaseKeyPassword = readSigningValue("WORDCOACH_RELEASE_KEY_PASSWORD")
+val hasReleaseSigningConfig = !releaseStoreFilePath.isNullOrBlank() &&
+  !releaseStorePassword.isNullOrBlank() &&
+  !releaseKeyAlias.isNullOrBlank() &&
+  !releaseKeyPassword.isNullOrBlank()
 
 android {
   namespace = "com.wordcoach"
@@ -36,9 +62,25 @@ android {
     buildConfigField("String", "CLIENT_TOKEN", clientToken.toBuildConfigStringLiteral())
   }
 
+  signingConfigs {
+    if (hasReleaseSigningConfig) {
+      create("release") {
+        storeFile = rootProject.file(releaseStoreFilePath!!)
+        storePassword = releaseStorePassword
+        keyAlias = releaseKeyAlias
+        keyPassword = releaseKeyPassword
+        enableV1Signing = true
+        enableV2Signing = true
+      }
+    }
+  }
+
   buildTypes {
     release {
       isMinifyEnabled = false
+      if (hasReleaseSigningConfig) {
+        signingConfig = signingConfigs.getByName("release")
+      }
       proguardFiles(
         getDefaultProguardFile("proguard-android-optimize.txt"),
         "proguard-rules.pro"

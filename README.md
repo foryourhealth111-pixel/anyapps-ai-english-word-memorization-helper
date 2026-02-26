@@ -46,6 +46,20 @@ WORDCOACH_CLIENT_TOKEN=your-strong-client-token
 
 You can also start from `mobile/gradle.properties.example`.
 
+### Release Signing
+
+1. Copy `mobile/keystore.properties.example` to `mobile/keystore.properties`.
+2. Fill in keystore path/passwords.
+3. Build signed release:
+
+```powershell
+cd mobile
+gradle :app:assembleRelease
+```
+
+When signing is configured, the distributable file is:
+`mobile/app/build/outputs/apk/release/app-release.apk`.
+
 ## Android Compatibility Notes
 
 - UI strings are localized with resources (`values/` + `values-zh-rCN/`) for multi-language devices.
