@@ -4,7 +4,7 @@
 
 [![Android](https://img.shields.io/badge/Android-API%2029%2B-3DDC84?logo=android&logoColor=white)](mobile/)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org/)
-[![Release](https://img.shields.io/github/v/release/foryourhealth111-pixel/Englishwordapp)](https://github.com/foryourhealth111-pixel/Englishwordapp/releases)
+[![Release](https://img.shields.io/github/v/release/foryourhealth111-pixel/ai-banxue-english-word-memorization)](https://github.com/foryourhealth111-pixel/ai-banxue-english-word-memorization/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 项目为什么而生
@@ -154,7 +154,7 @@ flowchart LR
 
 ## 发布与下载
 
-- GitHub Releases：`https://github.com/foryourhealth111-pixel/Englishwordapp/releases`
+- GitHub Releases：`https://github.com/foryourhealth111-pixel/ai-banxue-english-word-memorization/releases`
 
 ## 开源协议
 
