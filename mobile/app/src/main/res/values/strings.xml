@@ -1,10 +1,10 @@
 <resources>
-  <string name="app_name">Word Coach</string>
-  <string name="overlay_notification_title">Word Coach is running</string>
+  <string name="app_name">AI 伴学英语单词背诵</string>
+  <string name="overlay_notification_title">AI English Vocabulary Companion is running</string>
   <string name="overlay_notification_text">Tap to return and configure the floating assistant</string>
   <string name="copy_success">Explanation copied</string>
 
-  <string name="permission_header_title">Word Coach</string>
+  <string name="permission_header_title">AI 伴学英语单词背诵</string>
   <string name="permission_header_subtitle">Make screenshot vocabulary practice easier: authorize once, explain anytime.</string>
   <string name="permission_section_title">Permission steps</string>
   <string name="permission_step_overlay_title">Please grant floating window permission first.</string>

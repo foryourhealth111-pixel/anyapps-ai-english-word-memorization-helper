@@ -1,10 +1,10 @@
 <resources>
-  <string name="app_name">Word Coach</string>
-  <string name="overlay_notification_title">Word Coach 运行中</string>
+  <string name="app_name">AI 伴学英语单词背诵</string>
+  <string name="overlay_notification_title">AI 伴学英语单词背诵运行中</string>
   <string name="overlay_notification_text">点击返回应用配置悬浮辅助</string>
   <string name="copy_success">已复制讲解内容</string>
 
-  <string name="permission_header_title">Word Coach</string>
+  <string name="permission_header_title">AI 伴学英语单词背诵</string>
   <string name="permission_header_subtitle">让截图背词更轻松：授权一次，悬浮球随时讲解。</string>
   <string name="permission_section_title">权限步骤</string>
   <string name="permission_step_overlay_title">请先授予悬浮窗权限</string>
